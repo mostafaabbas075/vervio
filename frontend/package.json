@@ -1,0 +1,42 @@
+{
+  "name": "@vervio/frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test:realtime": "node --test tests/realtime-interview.test.mjs",
+    "test:pcm": "node --test tests/pcm-audio.test.mjs",
+    "test:capture": "node --test tests/microphone-capture.test.mjs",
+    "test:gemini": "node --test tests/gemini-audio-client.test.mjs",
+    "test:playback": "node --test tests/pcm-audio-player.test.mjs",
+    "test:recording": "node --test tests/interview-recorder.test.mjs",
+    "test:recordings": "node --test tests/recordings-workspace.test.mjs",
+    "test:room": "node --test tests/interview-room.test.mjs",
+    "diagnose:pcm": "node scripts/pcm-audio-local-diagnostic.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@eslint/js": "^9.26.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.26.0",
+    "globals": "^16.1.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: vervio-frontend
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      # This public URL is embedded during the Next.js build. Set it to the
+      # deployed backend HTTPS URL, without a trailing slash.
+      - key: NEXT_PUBLIC_API_BASE_URL
+        sync: false
+
+  - type: web
+    name: vervio-backend
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: AUTH_COOKIE_SECURE
+        value: "true"
+      # The frontend calls this separate public service directly. Secure None
+      # is required for its cross-origin session cookie; use a same-site custom
+      # domain and Lax if browser third-party-cookie policy requires it.
+      - key: AUTH_COOKIE_SAMESITE
+        value: none
+      - key: AI_REALTIME_PROVIDER
+        value: gemini
+      - key: STORAGE_PROVIDER
+        value: cloudflare_r2
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_BUCKET_NAME
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false

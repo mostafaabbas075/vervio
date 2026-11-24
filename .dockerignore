@@ -1,0 +1,26 @@
+# This is the Docker build context for the frontend image.
+.git/
+.gitignore
+.env
+.env.*
+**/.env
+**/.env.*
+
+node_modules/
+.next/
+frontend/node_modules/
+frontend/.next/
+frontend/tsconfig.tsbuildinfo
+
+backend/
+coverage/
+.ruff_cache/
+.pytest_cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+.vscode/
+.idea/
+*.log
+*.md
