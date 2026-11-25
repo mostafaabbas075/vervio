@@ -179,16 +179,16 @@ export function Overview() {
               {t.overview.description}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto sm:flex-nowrap">
             <Link
-              className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground sm:flex-none"
               href="/dashboard/candidates"
             >
               <Icon className="size-3.5" name="candidates" />
               {t.overview.viewCandidates}
             </Link>
             <Link
-              className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              className="inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 sm:flex-none"
               href="/dashboard/interviews"
             >
               <Icon className="size-3.5" name="interviews" />

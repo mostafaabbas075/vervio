@@ -96,7 +96,7 @@ function DashboardSidebar({
         aria-label={t.navigation.workspace}
         className={`fixed inset-y-0 start-0 z-50 flex flex-col border-e border-border bg-card transition-all duration-200 lg:translate-x-0 ${
           isOpen ? "translate-x-0 shadow-2xl" : closedPosition
-        } ${isCollapsed ? "w-[68px]" : "w-64"}`}
+        } ${isCollapsed ? "w-64 lg:w-[68px]" : "w-64"} max-w-[calc(100vw-1.5rem)]`}
       >
         {/* Brand / Header */}
         <div className={`flex h-14 items-center border-b border-border px-3.5 ${isCollapsed ? "justify-center" : "justify-between"}`}>
@@ -109,7 +109,7 @@ function DashboardSidebar({
             <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm">
               <Icon className="size-4" name="sparkles" />
             </span>
-            {!isCollapsed ? (
+            {!isCollapsed || isOpen ? (
               <div className="flex flex-col">
                 <span className="text-base font-bold tracking-tight text-foreground leading-none">
                   Vervio
@@ -152,7 +152,9 @@ function DashboardSidebar({
             return (
               <Link
                 className={`group flex items-center rounded-lg text-xs font-medium transition-colors ${
-                  isCollapsed ? "size-10 justify-center mx-auto" : "gap-3 px-3 py-2.5"
+                  isCollapsed
+                    ? "w-full gap-3 px-3 py-2.5 lg:size-10 lg:justify-center lg:mx-auto lg:px-0"
+                    : "min-h-10 gap-3 px-3 py-2.5"
                 } ${
                   isActive
                     ? "bg-primary/10 text-primary font-semibold dark:bg-primary/15 dark:text-cyan-300"
@@ -169,7 +171,7 @@ function DashboardSidebar({
                   }`}
                   name={item.icon}
                 />
-                {!isCollapsed ? <span className="truncate">{label}</span> : null}
+                {!isCollapsed || isOpen ? <span className="truncate">{label}</span> : null}
               </Link>
             );
           })}
@@ -245,13 +247,13 @@ function DashboardTopbar({
   const pageTitle = t.navigation[pageLabelKey(pathname)];
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-border bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 flex min-h-14 flex-wrap items-center justify-between gap-2 border-b border-border bg-background/95 px-3 py-2 backdrop-blur supports-[backdrop-filter]:bg-background/60 sm:px-6 sm:py-0 lg:px-8">
       {/* Left: Sidebar triggers + Breadcrumbs */}
-      <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
         {/* Mobile menu toggle */}
         <button
           aria-label={t.navigation.menu}
-          className="grid size-8 shrink-0 place-items-center rounded-md border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground lg:hidden"
+          className="grid size-10 shrink-0 place-items-center rounded-md border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground lg:hidden"
           onClick={onOpenNavigation}
           type="button"
         >
@@ -261,7 +263,7 @@ function DashboardTopbar({
         {/* Desktop sidebar toggle button */}
         <button
           aria-label={isCollapsed ? t.navigation.expandSidebar : t.navigation.collapseSidebar}
-          className="hidden lg:grid size-8 shrink-0 place-items-center rounded-md border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+          className="hidden lg:grid size-10 shrink-0 place-items-center rounded-md border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
           onClick={onToggleCollapse}
           title={isCollapsed ? t.navigation.expandSidebar : t.navigation.collapseSidebar}
           type="button"
@@ -282,7 +284,7 @@ function DashboardTopbar({
       </div>
 
       {/* Right: Controls & Profile */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="ms-auto flex max-w-full flex-wrap items-center justify-end gap-2 sm:gap-3">
         <ThemeSwitcher />
         <LanguageSwitcher />
 
@@ -298,7 +300,7 @@ function DashboardTopbar({
 
         {/* Sign out button */}
         <button
-          className="inline-flex h-8 items-center rounded-md border border-input bg-background px-3 text-xs font-medium text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex min-h-10 items-center rounded-md border border-input bg-background px-3 text-xs font-medium text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors disabled:cursor-not-allowed disabled:opacity-60"
           disabled={isLoggingOut}
           onClick={onLogout}
           type="button"
@@ -435,7 +437,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
 
   return (
     <DashboardContext.Provider value={contextValue}>
-      <div className="min-h-screen bg-muted/30 dark:bg-background text-foreground transition-colors">
+      <div className="min-h-[100dvh] bg-muted/30 text-foreground transition-colors dark:bg-background">
         <DashboardSidebar
           isCollapsed={isCollapsed}
           isOpen={isNavigationOpen}
@@ -444,7 +446,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
           user={contextValue.user}
         />
         <div
-          className={`min-h-screen transition-all duration-200 ${
+          className={`min-h-[100dvh] transition-all duration-200 ${
             isCollapsed ? "lg:ps-[68px]" : "lg:ps-64"
           }`}
         >
@@ -456,7 +458,7 @@ export function DashboardShell({ children }: { children: ReactNode }) {
             onToggleCollapse={handleToggleCollapse}
             user={contextValue.user}
           />
-          <main className="p-4 sm:p-6 lg:p-8">
+          <main className="p-3 sm:p-6 lg:p-8">
             <div className="mx-auto max-w-7xl">{children}</div>
             {error ? (
               <p className="mx-auto mt-4 max-w-7xl text-sm text-destructive">{error}</p>

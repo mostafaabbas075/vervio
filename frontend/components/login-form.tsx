@@ -63,9 +63,9 @@ export function LoginForm() {
   }
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground flex flex-col lg:grid lg:grid-cols-2">
+    <main className="relative flex min-h-[100dvh] flex-col bg-background text-foreground lg:grid lg:grid-cols-2">
       {/* Top Controls: ThemeSwitcher and LanguageSwitcher */}
-      <div className="absolute top-4 end-4 z-20 flex items-center gap-2 sm:top-6 sm:end-6">
+      <div className="safe-area-top safe-area-inline absolute top-3 end-3 z-20 flex items-center gap-2 sm:top-6 sm:end-6">
         <ThemeSwitcher />
         <LanguageSwitcher />
       </div>
@@ -100,32 +100,32 @@ export function LoginForm() {
               <span className="grid size-6 place-items-center rounded-full bg-primary/10 text-primary">
                 <Icon className="size-3.5" name="interviews" />
               </span>
-              <span>AI-led, candidate-focused German interview sessions</span>
+              <span>{t.login.featureInterviews}</span>
             </div>
             <div className="flex items-center gap-3 text-xs font-medium text-foreground">
               <span className="grid size-6 place-items-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 <Icon className="size-3.5" name="evaluations" />
               </span>
-              <span>Objective, evidence-based CEFR German evaluations</span>
+              <span>{t.login.featureEvaluations}</span>
             </div>
             <div className="flex items-center gap-3 text-xs font-medium text-foreground">
               <span className="grid size-6 place-items-center rounded-full bg-primary/10 text-primary">
                 <Icon className="size-3.5" name="check" />
               </span>
-              <span>Enterprise-grade secure recording & transcript access</span>
+              <span>{t.login.featureSecurity}</span>
             </div>
           </div>
         </div>
 
         {/* Footer info */}
         <div className="text-xs text-muted-foreground">
-          Vervio Platform · Secure German Interview Assessment
+          {t.login.platformCaption}
         </div>
       </section>
 
       {/* Right Column: Centered Login Form Card */}
-      <section className="flex flex-1 items-center justify-center p-6 sm:p-10 lg:p-12">
-        <div className="w-full max-w-[400px] space-y-6">
+      <section className="flex flex-1 items-center justify-center px-4 pb-6 pt-20 sm:p-10 lg:p-12">
+        <div className="w-full max-w-[400px] space-y-6 px-4 sm:px-0">
           {/* Mobile Brand Header */}
           <div className="flex items-center gap-2.5 lg:hidden">
             <span className="grid size-8 place-items-center rounded-lg bg-primary text-primary-foreground font-bold shadow-sm">
@@ -158,7 +158,7 @@ export function LoginForm() {
                 </label>
                 <input
                   autoComplete="email"
-                  className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   dir="ltr"
                   id="email"
                   onChange={(event) => setEmail(event.target.value)}
@@ -180,7 +180,7 @@ export function LoginForm() {
                 <div className="relative mt-1.5">
                   <input
                     autoComplete="current-password"
-                    className="h-9 w-full rounded-md border border-input bg-background px-3 py-1 pe-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                    className="min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 pe-10 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                     dir="ltr"
                     id="password"
                     onChange={(event) => setPassword(event.target.value)}
@@ -213,7 +213,7 @@ export function LoginForm() {
 
               {/* Submit Button */}
               <button
-                className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 disabled={isSubmitting}
                 type="submit"
               >

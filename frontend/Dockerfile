@@ -16,7 +16,7 @@ COPY package.json package-lock.json ./
 COPY frontend ./frontend
 
 # NEXT_PUBLIC_* values are deliberately build-time values. This one is a public
-# API origin, never a secret; Render provides it as a build argument.
+# API origin, never a secret; the deployment platform provides it as a build argument.
 ARG NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
 ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 RUN npm run build --workspace=@vervio/frontend

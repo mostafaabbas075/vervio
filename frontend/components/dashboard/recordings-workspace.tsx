@@ -771,7 +771,7 @@ function RecordingPlayerItem({
               {t.recordingsWorkspace.failedExplanation}
             </p>
             <button
-              className="mt-2.5 inline-flex items-center gap-1.5 rounded-md border border-destructive/30 bg-destructive/10 px-3 py-1 text-xs font-semibold text-destructive hover:bg-destructive/20 disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-2.5 inline-flex min-h-10 items-center gap-1.5 rounded-md border border-destructive/30 bg-destructive/10 px-3 py-1 text-xs font-semibold text-destructive hover:bg-destructive/20 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={isRetryingAssessment}
               onClick={() => void handleRetryAssessment()}
               type="button"
@@ -861,7 +861,7 @@ function RecordingPlayerItem({
               </label>
               <select
                 aria-label={t.recordingsWorkspace.requiredLevel}
-                className="rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm outline-none transition focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50"
+                className="min-h-10 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm outline-none transition focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50"
                 disabled={isUpdatingRequirement}
                 id={`req-select-${item.interview_id}`}
                 onChange={(e) => void handleRequirementChange(e)}
@@ -1313,7 +1313,7 @@ export function RecordingsWorkspace() {
           <div className="flex flex-col justify-between gap-4 rounded-xl border border-border bg-card p-4 text-card-foreground shadow-sm sm:flex-row sm:items-center sm:p-5">
             <div className="flex items-center gap-3">
               <button
-                className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex min-h-10 items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
                 onClick={handleBackToFolders}
                 type="button"
               >
@@ -1347,7 +1347,7 @@ export function RecordingsWorkspace() {
             <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center text-sm text-destructive">
               <p>{recordingsError}</p>
               <button
-                className="mt-4 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+                className="mt-4 min-h-11 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
                 onClick={() =>
                   void loadFolderRecordings(selectedCandidate.candidate_id || selectedCandidate.id)
                 }
@@ -1357,7 +1357,7 @@ export function RecordingsWorkspace() {
               </button>
             </div>
           ) : candidateRecordings.length === 0 ? (
-            <div className="rounded-xl border border-border bg-card p-12 text-center shadow-sm">
+            <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm sm:p-12">
               <span className="mx-auto grid size-12 place-items-center rounded-xl border border-border bg-muted/60 text-muted-foreground">
                 <Icon className="size-6" name="folder" />
               </span>
@@ -1388,7 +1388,7 @@ export function RecordingsWorkspace() {
             </span>
             <input
               aria-label={t.recordingsWorkspace.searchPlaceholder}
-              className="h-9 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              className="min-h-11 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t.recordingsWorkspace.searchPlaceholder}
               type="text"
@@ -1407,7 +1407,7 @@ export function RecordingsWorkspace() {
             <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center text-sm text-destructive">
               <p>{candidatesError}</p>
               <button
-                className="mt-4 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+                className="mt-4 min-h-11 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
                 onClick={() => void loadCandidates()}
                 type="button"
               >
@@ -1415,7 +1415,7 @@ export function RecordingsWorkspace() {
               </button>
             </div>
           ) : candidates.length === 0 ? (
-            <div className="rounded-xl border border-border bg-card p-12 text-center shadow-sm">
+            <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm sm:p-12">
               <span className="mx-auto grid size-12 place-items-center rounded-xl border border-border bg-muted/60 text-muted-foreground">
                 <Icon className="size-6" name="recording" />
               </span>
@@ -1427,7 +1427,7 @@ export function RecordingsWorkspace() {
               </p>
             </div>
           ) : filteredCandidates.length === 0 ? (
-            <div className="rounded-xl border border-border bg-card p-12 text-center shadow-sm">
+            <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm sm:p-12">
               <span className="mx-auto grid size-12 place-items-center rounded-xl border border-border bg-muted/60 text-muted-foreground">
                 <Icon className="size-6" name="search" />
               </span>
@@ -1442,7 +1442,7 @@ export function RecordingsWorkspace() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredCandidates.map((candidate) => (
                 <button
-                  className="group flex flex-col justify-between rounded-xl border border-border bg-card p-5 text-start text-card-foreground shadow-sm transition hover:border-border/80 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group flex min-h-44 flex-col justify-between rounded-xl border border-border bg-card p-5 text-start text-card-foreground shadow-sm transition hover:border-border/80 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   key={candidate.candidate_id || candidate.id}
                   onClick={() => handleOpenFolder(candidate)}
                   type="button"

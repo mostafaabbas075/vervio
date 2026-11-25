@@ -34,6 +34,10 @@ type Translation = {
     unavailable: string;
     showPassword: string;
     hidePassword: string;
+    featureInterviews: string;
+    featureEvaluations: string;
+    featureSecurity: string;
+    platformCaption: string;
   };
   dashboard: {
     loading: string;
@@ -384,6 +388,10 @@ export const translations: Record<Locale, Translation> = {
       unavailable: "Sign-in is unavailable right now. Please try again.",
       showPassword: "Show password",
       hidePassword: "Hide password",
+      featureInterviews: "AI-led, candidate-focused German interview sessions",
+      featureEvaluations: "Objective, evidence-based CEFR German evaluations",
+      featureSecurity: "Secure access to recordings and transcripts",
+      platformCaption: "Vervio Platform · Secure German Interview Assessment",
     },
     dashboard: {
       loading: "Restoring your secure workspace…",
@@ -751,6 +759,10 @@ export const translations: Record<Locale, Translation> = {
       unavailable: "تسجيل الدخول غير متاح حالياً. يُرجى المحاولة مرة أخرى.",
       showPassword: "إظهار كلمة المرور",
       hidePassword: "إخفاء كلمة المرور",
+      featureInterviews: "مقابلات ألمانية مدعومة بالذكاء الاصطناعي ومتمحورة حول المرشح",
+      featureEvaluations: "تقييمات ألمانية موضوعية ومستندة إلى الأدلة وفق CEFR",
+      featureSecurity: "وصول آمن إلى التسجيلات والنصوص",
+      platformCaption: "منصة Vervio · تقييم آمن للمقابلات الألمانية",
     },
     dashboard: {
       loading: "جارٍ استعادة مساحة عملك الآمنة…",

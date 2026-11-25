@@ -28,5 +28,5 @@ USER vervio
 EXPOSE 8000
 
 # One worker intentionally owns each long-lived Gemini Live WebSocket session.
-# Render supplies PORT at runtime; no migrations run at container startup.
+# The hosting platform supplies PORT at runtime; no migrations run at container startup.
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port \"${PORT:-8000}\" --workers 1"]

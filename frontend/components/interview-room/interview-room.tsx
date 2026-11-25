@@ -635,7 +635,7 @@ export function InterviewRoom() {
 
   if (roomState === "loading") {
     return (
-      <main className="grid min-h-screen place-items-center bg-background px-6 text-foreground">
+      <main className="grid min-h-[100dvh] place-items-center bg-background px-4 text-foreground sm:px-6">
         <div className="flex flex-col items-center gap-4 text-center">
           <span className="grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary animate-pulse">
             <Icon className="size-6" name="sparkles" />
@@ -648,8 +648,8 @@ export function InterviewRoom() {
 
   if (roomState === "session_unavailable" || !session) {
     return (
-      <main className="grid min-h-screen place-items-center bg-background px-6 text-foreground">
-        <section className="max-w-md w-full rounded-2xl border border-destructive/20 bg-card p-8 text-center shadow-lg">
+      <main className="grid min-h-[100dvh] place-items-center bg-background px-4 text-foreground sm:px-6">
+        <section className="w-full max-w-md rounded-2xl border border-destructive/20 bg-card p-6 text-center shadow-lg sm:p-8">
           <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-destructive/10 text-destructive">
             <Icon className="size-6" name="activity" />
           </span>
@@ -668,8 +668,8 @@ export function InterviewRoom() {
 
   if (roomState === "already_completed" && session) {
     return (
-      <main className="grid min-h-screen place-items-center bg-background px-6 text-foreground">
-        <section className="max-w-md w-full rounded-2xl border border-border bg-card p-8 text-center shadow-lg">
+      <main className="grid min-h-[100dvh] place-items-center bg-background px-4 text-foreground sm:px-6">
+        <section className="w-full max-w-md rounded-2xl border border-border bg-card p-6 text-center shadow-lg sm:p-8">
           <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-primary/10 text-primary">
             <Icon className="size-6" name="check" />
           </span>
@@ -689,9 +689,9 @@ export function InterviewRoom() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col bg-background text-foreground">
-      <header className="border-b border-border/80 bg-card/80 px-4 py-3 backdrop-blur-md sm:px-6">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+    <main className="flex min-h-[100dvh] flex-col bg-background text-foreground">
+      <header className="safe-area-top safe-area-inline border-b border-border/80 bg-card/80 px-3 py-2 backdrop-blur-md sm:px-6 sm:py-3">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 sm:gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
               V
@@ -706,7 +706,7 @@ export function InterviewRoom() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="ms-auto flex max-w-full flex-wrap items-center justify-end gap-2 sm:gap-3">
             <div
               aria-label={t.room.interviewTimer}
               className={`rounded-full border px-3 py-1.5 font-mono text-xs font-semibold tabular-nums ${
@@ -733,7 +733,7 @@ export function InterviewRoom() {
         </div>
       </header>
 
-      <section className="flex flex-1 px-4 py-5 sm:px-6 sm:py-8">
+      <section className="safe-area-inline flex flex-1 px-3 py-4 sm:px-6 sm:py-8">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-5">
           {deviceLossMessage || connectionError || recordingError ? (
             <div className="space-y-2" aria-live="polite">
@@ -780,10 +780,10 @@ export function InterviewRoom() {
             }`}
             data-testid="candidate-video-stage"
           >
-            <div className="aspect-[4/3] w-full sm:aspect-video">
+            <div className="aspect-[3/4] w-full sm:aspect-video">
               <video
                 autoPlay
-                className={`size-full object-cover transition-opacity duration-300 ${
+                className={`size-full object-contain transition-opacity duration-300 sm:object-cover ${
                   cameraActive ? "opacity-100" : "opacity-0"
                 }`}
                 muted
@@ -819,19 +819,19 @@ export function InterviewRoom() {
               </div>
             ) : null}
 
-            <div className="absolute start-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+            <div className="absolute start-3 top-3 flex max-w-[calc(50%-0.75rem)] items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:start-4 sm:top-4">
               <span className="size-1.5 rounded-full bg-emerald-400" />
               <span className="max-w-44 truncate sm:max-w-none">
                 {session.candidate.given_name} {session.candidate.family_name}
               </span>
             </div>
 
-            <div className="absolute end-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md" aria-live="polite">
+            <div className="absolute end-3 top-3 flex max-w-[calc(50%-0.75rem)] items-center gap-2 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:end-4 sm:top-4" aria-live="polite">
               <span className={`size-1.5 rounded-full ${isAiSpeaking ? "bg-primary animate-pulse" : "bg-emerald-400"}`} />
-              <span>{assistantState}</span>
+              <span className="truncate">{assistantState}</span>
             </div>
 
-            <div className="absolute bottom-4 start-4 end-4 flex flex-wrap items-end justify-between gap-3">
+            <div className="absolute bottom-3 start-3 end-3 flex flex-wrap items-end justify-between gap-2 sm:bottom-4 sm:start-4 sm:end-4 sm:gap-3">
               <div className="rounded-xl border border-white/15 bg-black/45 px-3 py-2 text-xs text-white backdrop-blur-md">
                 <div className="flex items-center gap-2">
                   <Icon className={`size-3.5 ${microphoneActive ? "text-emerald-300" : "text-rose-300"}`} name="mic" />
@@ -844,7 +844,7 @@ export function InterviewRoom() {
                   </span>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex max-w-full flex-wrap justify-end gap-2">
                 <span className={`rounded-full border px-3 py-1.5 text-xs font-medium backdrop-blur-md ${
                   cameraActive
                     ? "border-emerald-300/30 bg-emerald-400/15 text-emerald-100"
@@ -863,7 +863,7 @@ export function InterviewRoom() {
             </div>
           </section>
 
-          <footer className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 rounded-2xl border border-border bg-card/80 px-4 py-4 shadow-sm backdrop-blur-sm sm:flex-row sm:px-5">
+          <footer className="safe-area-bottom mx-auto flex w-full max-w-6xl flex-col items-stretch justify-between gap-4 rounded-2xl border border-border bg-card/80 px-4 py-4 shadow-sm backdrop-blur-sm sm:flex-row sm:items-center sm:px-5">
             <div className="min-w-0 text-center sm:text-start">
               <p className="text-sm font-semibold text-foreground">
                 {isEndingInterview ? t.room.interviewEnding : t.room.title}
@@ -878,7 +878,7 @@ export function InterviewRoom() {
 
             {isConnectionActive ? (
               <button
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-destructive px-5 text-sm font-semibold text-destructive-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-destructive px-5 text-sm font-semibold text-destructive-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 disabled={isEndingInterview}
                 onClick={() => void endInterview()}
                 type="button"
@@ -888,7 +888,7 @@ export function InterviewRoom() {
               </button>
             ) : pendingRecordingRef.current ? (
               <button
-                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                 disabled={recordingState === "uploading" || isEndingInterview}
                 onClick={() => void retryRecordingUpload()}
                 type="button"
@@ -897,7 +897,7 @@ export function InterviewRoom() {
               </button>
             ) : (
               <button
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                 disabled={!startIsAvailable}
                 onClick={() => void startInterview()}
                 type="button"
@@ -915,10 +915,10 @@ export function InterviewRoom() {
           aria-describedby="guidelines-dialog-description"
           aria-labelledby="guidelines-dialog-title"
           aria-modal="true"
-          className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-slate-950/55 p-3 backdrop-blur-sm sm:p-4"
           role="dialog"
         >
-          <section className="w-full max-w-lg rounded-3xl border border-border bg-card p-6 text-card-foreground shadow-2xl sm:p-8">
+          <section className="w-full max-w-lg max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-3xl border border-border bg-card p-5 text-card-foreground shadow-2xl sm:max-h-[calc(100dvh-2rem)] sm:p-8">
             <div className="flex items-center gap-3">
               <span className="grid size-10 place-items-center rounded-xl bg-primary/10 text-primary">
                 <Icon className="size-5" name="clipboard" />

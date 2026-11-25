@@ -15,7 +15,7 @@ export function SectionPlaceholder({ section }: { section: Section }) {
   const content = t.emptyStates[section];
 
   return (
-    <section className="relative overflow-hidden rounded-xl border border-border bg-card px-6 py-16 text-card-foreground shadow-sm sm:px-10">
+    <section className="relative overflow-hidden rounded-xl border border-border bg-card px-5 py-12 text-card-foreground shadow-sm sm:px-10 sm:py-16">
       <div className="relative mx-auto max-w-lg text-center">
         <span className="mx-auto grid size-12 place-items-center rounded-xl bg-primary/10 text-primary">
           <Icon className="size-6" name={sectionIcons[section]} />

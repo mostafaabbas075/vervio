@@ -117,7 +117,7 @@ export function InterviewDetail() {
       <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-6 text-center text-xs text-destructive">
         <p>{error}</p>
         <Link
-          className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent"
+          className="mt-3 inline-flex min-h-10 items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent"
           href="/dashboard/interviews"
         >
           {t.interviews.backToInterviews}
@@ -147,7 +147,7 @@ export function InterviewDetail() {
       {/* Back button */}
       <div>
         <Link
-          className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+          className="inline-flex min-h-10 items-center gap-1.5 rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
           href="/dashboard/interviews"
         >
           <Icon
@@ -187,25 +187,25 @@ export function InterviewDetail() {
           </div>
 
           <dl className="mt-6 divide-y divide-border/60">
-            <div className="flex items-center justify-between gap-5 py-3">
+            <div className="flex flex-col items-start gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
               <dt className="text-xs font-medium text-muted-foreground">{t.interviews.candidate}</dt>
-              <dd className="text-end text-xs font-semibold text-foreground">
+              <dd className="w-full break-words text-start text-xs font-semibold text-foreground sm:w-auto sm:text-end">
                 {candidateFullName}
               </dd>
             </div>
-            <div className="flex items-center justify-between gap-5 py-3">
+            <div className="flex flex-col items-start gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
               <dt className="text-xs font-medium text-muted-foreground">{t.interviews.status}</dt>
               <dd className="text-xs font-medium text-foreground">{statusLabelText}</dd>
             </div>
-            <div className="flex items-center justify-between gap-5 py-3">
+            <div className="flex flex-col items-start gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
               <dt className="text-xs font-medium text-muted-foreground">{t.interviews.requiredLevel}</dt>
               <dd className="text-xs font-mono font-medium text-foreground">
                 {session.required_german_level || t.interviews.notConfigured}
               </dd>
             </div>
-            <div className="flex items-center justify-between gap-5 py-3">
+            <div className="flex flex-col items-start gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5">
               <dt className="text-xs font-medium text-muted-foreground">{t.interviews.created}</dt>
-              <dd className="text-end text-xs text-muted-foreground">
+              <dd className="w-full text-start text-xs text-muted-foreground sm:w-auto sm:text-end">
                 {formatDate(session.created_at, locale)}
               </dd>
             </div>
@@ -289,7 +289,7 @@ export function InterviewDetail() {
 
           <div className="mt-6 space-y-2.5">
             <Link
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
               href={`/interview/${session.id}`}
             >
               <Icon className="size-3.5" name="sparkles" />
@@ -298,7 +298,7 @@ export function InterviewDetail() {
 
             {session.status === "completed" || session.has_recording ? (
               <Link
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-input bg-background px-4 py-2 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
                 href="/dashboard/recordings"
               >
                 <Icon className="size-3.5 text-muted-foreground" name="folder" />

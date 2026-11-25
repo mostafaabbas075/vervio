@@ -26,7 +26,7 @@ export function ThemeSwitcher() {
           <button
             aria-label={opt.label}
             aria-pressed={isActive}
-            className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
+            className={`flex min-h-9 min-w-9 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring ${
               isActive
                 ? "bg-background text-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-background/50 hover:text-foreground"

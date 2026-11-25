@@ -256,7 +256,7 @@ export function EvaluationsWorkspace() {
           </div>
 
           <Link
-            className="inline-flex items-center gap-1.5 self-start sm:self-auto rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+            className="inline-flex min-h-10 items-center gap-1.5 self-start rounded-md border border-input bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground sm:self-auto"
             href="/dashboard/recordings"
           >
             <Icon className="size-3.5 text-muted-foreground" name="folder" />
@@ -352,7 +352,7 @@ export function EvaluationsWorkspace() {
             { id: "failed", label: t.evaluations.filterFailed },
           ].map((tab) => (
             <button
-              className={`rounded-md px-3 py-1 text-xs font-medium transition ${
+              className={`min-h-10 rounded-md px-3 py-1 text-xs font-medium transition ${
                 statusFilter === tab.id
                   ? "bg-card text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -373,7 +373,7 @@ export function EvaluationsWorkspace() {
           </span>
           <input
             aria-label={t.evaluations.searchPlaceholder}
-            className="h-9 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-xs text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="min-h-11 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t.evaluations.searchPlaceholder}
             type="text"
@@ -392,7 +392,7 @@ export function EvaluationsWorkspace() {
         <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center text-xs text-destructive">
           <p>{error}</p>
           <button
-            className="mt-3 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+            className="mt-3 min-h-10 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
             onClick={() => void loadEvaluations()}
             type="button"
           >

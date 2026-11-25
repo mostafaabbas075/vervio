@@ -195,7 +195,7 @@ export function InterviewsWorkspace() {
                 {t.interviews.candidate}
               </label>
               <select
-                className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 disabled={candidates.length === 0 || isCreating}
                 id="interview-candidate"
                 onChange={(event) => setCandidateId(event.target.value)}
@@ -219,7 +219,7 @@ export function InterviewsWorkspace() {
                 {t.interviews.requiredLevel}
               </label>
               <select
-                className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 disabled={isCreating}
                 id="required-german-level"
                 onChange={(event) => setRequiredGermanLevel(event.target.value)}
@@ -246,7 +246,7 @@ export function InterviewsWorkspace() {
             ) : null}
 
             <button
-              className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={candidates.length === 0 || isCreating}
               type="submit"
             >
@@ -284,7 +284,7 @@ export function InterviewsWorkspace() {
               </span>
               <input
                 aria-label={t.interviews.searchPlaceholder}
-                className="h-9 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-xs text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="min-h-11 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.interviews.searchPlaceholder}
                 type="text"
@@ -302,7 +302,7 @@ export function InterviewsWorkspace() {
             <div className="mt-6 rounded-lg border border-destructive/30 bg-destructive/5 p-8 text-center text-xs text-destructive">
               <p>{error}</p>
               <button
-                className="mt-3 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+                className="mt-3 min-h-10 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
                 onClick={() => void loadWorkspace()}
                 type="button"
               >
@@ -395,7 +395,7 @@ export function InterviewsWorkspace() {
                       {/* Action */}
                       <div className="col-span-2 flex items-center justify-end">
                         <Link
-                          className="inline-flex items-center gap-1 rounded-md border border-input bg-background px-2.5 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+                          className="inline-flex min-h-9 items-center gap-1 rounded-md border border-input bg-background px-2.5 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
                           href={`/dashboard/interviews/${session.id}`}
                         >
                           <span>{t.interviews.viewDetails}</span>

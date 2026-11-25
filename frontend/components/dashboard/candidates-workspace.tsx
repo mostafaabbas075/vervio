@@ -179,7 +179,7 @@ export function CandidatesWorkspace() {
                 {t.candidates.givenName}
               </label>
               <input
-                className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 id="given-name"
                 onChange={(event) => setGivenName(event.target.value)}
                 required
@@ -192,7 +192,7 @@ export function CandidatesWorkspace() {
                 {t.candidates.familyName}
               </label>
               <input
-                className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 id="family-name"
                 onChange={(event) => setFamilyName(event.target.value)}
                 required
@@ -206,7 +206,7 @@ export function CandidatesWorkspace() {
               </label>
               <input
                 autoComplete="email"
-                className="mt-1.5 h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="mt-1.5 min-h-11 w-full rounded-md border border-input bg-background px-3 py-1 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 dir="ltr"
                 id="candidate-email"
                 onChange={(event) => setEmail(event.target.value)}
@@ -223,7 +223,7 @@ export function CandidatesWorkspace() {
             ) : null}
 
             <button
-              className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={isCreating}
               type="submit"
             >
@@ -261,7 +261,7 @@ export function CandidatesWorkspace() {
               </span>
               <input
                 aria-label={t.candidates.searchPlaceholder}
-                className="h-9 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-xs text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                className="min-h-11 w-full rounded-md border border-input bg-background py-1.5 pe-4 ps-9 text-sm text-foreground shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.candidates.searchPlaceholder}
                 type="text"
@@ -279,7 +279,7 @@ export function CandidatesWorkspace() {
             <div className="mt-6 rounded-lg border border-destructive/30 bg-destructive/5 p-8 text-center text-xs text-destructive">
               <p>{error}</p>
               <button
-                className="mt-3 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
+                className="mt-3 min-h-10 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground shadow-sm transition hover:bg-primary/90"
                 onClick={() => void loadCandidates()}
                 type="button"
               >
@@ -359,7 +359,7 @@ export function CandidatesWorkspace() {
                       {/* Actions */}
                       <div className="col-span-2 flex items-center gap-1.5 self-end sm:self-auto sm:justify-end">
                         <Link
-                          className="inline-flex items-center gap-1 rounded-md border border-input bg-background px-2 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+                          className="inline-flex min-h-9 items-center gap-1 rounded-md border border-input bg-background px-2 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
                           href="/dashboard/recordings"
                           title={t.overview.viewRecordings}
                         >
@@ -367,7 +367,7 @@ export function CandidatesWorkspace() {
                           <span className="hidden xl:inline">{t.navigation.recordings}</span>
                         </Link>
                         <Link
-                          className="inline-flex items-center gap-1 rounded-md border border-input bg-background px-2 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
+                          className="inline-flex min-h-9 items-center gap-1 rounded-md border border-input bg-background px-2 py-1 text-[11px] font-medium text-foreground shadow-sm transition hover:bg-accent hover:text-accent-foreground"
                           href="/dashboard/interviews"
                           title={t.interviews.createSession}
                         >
